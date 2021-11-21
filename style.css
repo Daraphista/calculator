@@ -8,26 +8,37 @@ body {
   align-items: center;
 }
 
-.container, .screen, .numpad {
-  border: black solid 1px;
+.container, .screen, .numpad, button {
+  /* border: black solid 1px; */
   box-sizing: border-box;
 }
 
 .container {
-  height: 550px;
+  display: flex;
+  flex-direction: column;
+  height: 555px;
   width: 430px;
+  /* background-color: rgb(35, 35, 37); */
+  padding: 5px;
+  box-shadow: 0 0 15px 0 rgb(145, 145, 145);
 }
 
 .container .screen {
   height: 150px;
+  font-size: 100px;
+  padding-top: 20px;
+  direction: rtl;
 }
 
 .container .numpad {
   height: 400px;
+  gap: 2px;
 }
 
 .numpad button {
   font-size: 20px;
+  border: rgb(236, 236, 236) solid 1px;
+  background-color: white;
 }
 
 .numpad {
