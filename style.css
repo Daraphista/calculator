@@ -41,6 +41,14 @@ body {
   background-color: white;
 }
 
+.numpad button:hover {
+  background-color: rgb(221, 220, 220);
+}
+
+.numpad button:active {
+  background-color: rgb(180, 180, 180);
+}
+
 .numpad {
   display: grid;
   grid-template-columns: repeat(4, minmax(auto, 1fr));
