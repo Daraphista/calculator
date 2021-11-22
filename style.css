@@ -24,10 +24,13 @@ body {
 }
 
 .container .screen {
+  display: flex;
+  flex-direction: column;
   height: 150px;
-  font-size: 100px;
+  width: 400px;
+  font-size: 60px;
   padding-top: 20px;
-  direction: rtl;
+  align-items: flex-end;
 }
 
 .container .numpad {
