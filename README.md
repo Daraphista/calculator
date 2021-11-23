@@ -17,13 +17,14 @@ TODO:
       - 3d Calculator theme (windows calculator icon style)?
       - Ability to switch between themes
   Add functionality
-        - numpad as a grid of squares
+        * numpad as a grid of squares
     - JS
-      - Equals functionality
-      - Addition
-      - Subtraction
-      - Multiplication
-      - Division
+      * screen functionality
+      * Equals functionality
+      * Addition
+      * Subtraction
+      * Multiplication
+      * Division
       - Clear
       - positive / negative
       - Percentage
