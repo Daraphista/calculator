@@ -5,16 +5,18 @@ const equals = document.querySelector("#equals");
 
 buttons.forEach(button => button.addEventListener("click", () => {
   screen.textContent += button.textContent;
+  console.log(screen.textContent);
   screen.textContent = format(screen.textContent);
   equals.addEventListener("click", () => {
     screen.textContent = calculate(screen.textContent);
-    console.log(screen.textContent);
   });
 }))
 
 function format(str) {
   str = str.replace(/\++/g, "+").replace(/−+/g, "−").replace(/÷+/g, "÷").replace(/×+/g, "×")
-  return (str.match(/[0-9]/)) ? str : str.replace(/\+|−|÷|×|=/g, "");
+  str = (str.match(/[0-9]/)) ? str : str.replace(/\+|−|÷|×|=/g, "");
+  str = (str.match(/[0-9]\D\D/)) ? str.slice(0, -1) : str;
+  return str;
 }
 
 function calculate(str) {
