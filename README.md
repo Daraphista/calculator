@@ -26,5 +26,5 @@ TODO:
       * Multiplication
       * Division
       * Clear
-      - positive / negative
-      - Percentage
+      * positive / negative
+      * Percentage
