@@ -6,6 +6,7 @@ const equals = document.querySelector("#equals");
 const backspace = document.querySelector("#backspace");
 const clear = document.querySelector("#clear");
 const negate = document.querySelector("#negate");
+const percent = document.querySelector("#percent");
 
 
 displayables.forEach(button => button.addEventListener("click", () => {
@@ -33,6 +34,23 @@ clear.addEventListener("click", () => {
 
 negate.addEventListener("click", () => {
   screen.textContent = screen.textContent.insert(screen.textContent.search(/\+|−|÷|×/)+1, '-')
+})
+
+percent.addEventListener("click", () => {
+  let num;
+  //if there is an arithmetic operator, divide number and return the array
+  if(screen.textContent.match(/\+|−|÷|×/)) {
+    num = screen.textContent.slice(screen.textContent.search(/\+|−|÷|×/)+1);
+    screen.textContent = screen.textContent.slice(0, screen.textContent.search(/\+|−|÷|×/)+1)
+    num = +num / 100;
+    screen.textContent += num.toString();
+  } else {
+    //else divide the first number and return the array
+    num = screen.textContent
+    num = +num / 100;
+    screen.textContent = num.toString();
+  }
+  console.log(num);
 })
 
 String.prototype.insert = function(index, string) {
