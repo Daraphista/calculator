@@ -1,20 +1,30 @@
 const screen = document.querySelector(".screen");
 const buttons = Array.from(document.querySelectorAll("button"));
-const displayables = Array.from(document.querySelectorAll(".displayable"))
-const number = document.querySelector(".number");
+const displayables = Array.from(document.querySelectorAll(".displayable"));
+const numbers = Array.from(document.querySelectorAll(".number"));
+const arithmetics = Array.from(document.querySelectorAll(".arithmetic"));
 const equals = document.querySelector("#equals");
 const backspace = document.querySelector("#backspace");
 const clear = document.querySelector("#clear");
 const negate = document.querySelector("#negate");
 const percent = document.querySelector("#percent");
 
+arithmetics.forEach(button => button.addEventListener("click", () => {
+  screen.textContent = calculate(screen.textContent);
+}))
 
 displayables.forEach(button => button.addEventListener("click", () => {
-  if(screen.textContent === '0') {
-    screen.textContent = screen.textContent.substring(1);
-  }
-  screen.textContent += button.textContent;
+  if(screen.textContent === '0') {screen.textContent = screen.textContent.substring(1)}
+
+  if(screen.textContent.length < 23) {screen.textContent += button.textContent}
+  
   screen.textContent = format(screen.textContent);
+}))
+
+buttons.forEach(button => button.addEventListener("click", () => {
+  if(screen.textContent.length > 0 && screen.textContent.length <= 11) {screen.style.fontSize = "60px"} else
+  if(screen.textContent.length >= 11 && screen.textContent.length <= 17) {screen.style.fontSize = "40px"} else
+  if(screen.textContent.length > 16 && screen.textContent.length < 24) {screen.style.fontSize = "30px"}
 }))
 
 equals.addEventListener("click", () => {
@@ -30,10 +40,25 @@ backspace.addEventListener("click", () => {
 
 clear.addEventListener("click", () => {
   screen.textContent = '0';
+  screen.style.fontSize = "60px";
 })
 
-negate.addEventListener("click", () => {
-  screen.textContent = screen.textContent.insert(screen.textContent.search(/\+|−|÷|×/)+1, '-')
+
+negate.addEventListener("click", function() {
+  let num;
+  //if there is an arithmetic operator, multiply number by -1 and return the array
+  if(screen.textContent.match(/\+|−|÷|×/)) {
+    num = screen.textContent.slice(screen.textContent.search(/\+|−|÷|×/)+1);
+    screen.textContent = screen.textContent.slice(0, screen.textContent.search(/\+|−|÷|×/)+1)
+    num = +num * -1;
+    screen.textContent += num.toString();
+  } else {
+    //else multiply the first number by -1 and return the array
+    num = screen.textContent
+    num = +num * -1;
+    screen.textContent = num.toString();
+  }
+  console.log(num);
 })
 
 percent.addEventListener("click", () => {
@@ -57,7 +82,7 @@ String.prototype.insert = function(index, string) {
   if (index > 0) {
     return this.substring(0, index) + string + this.substr(index);
   }
-
+  
   return string + this;
 }
 
