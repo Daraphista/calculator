@@ -130,7 +130,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return +a / +b;
+  return (+a === 0 || +b === 0) ? alert("I see what you're trying to do ;)") : +a / +b ;
 }
 
 theme.addEventListener("change", () => {
