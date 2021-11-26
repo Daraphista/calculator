@@ -16,6 +16,7 @@ TODO:
       - Windows Calculator theme?
       - 3d Calculator theme (windows calculator icon style)?
       - Ability to switch between themes
+      - mobile mode
   Add functionality
         * numpad as a grid of squares
     * JS
