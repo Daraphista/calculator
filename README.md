@@ -3,7 +3,7 @@ The Odin Project calculator exercise
 
 TODO:
   Create UI
-    - HTML
+    * HTML
       * Container Div
         * Screen
         * Numpad
@@ -18,7 +18,7 @@ TODO:
       - Ability to switch between themes
   Add functionality
         * numpad as a grid of squares
-    - JS
+    * JS
       * screen functionality
       * Equals functionality
       * Addition
