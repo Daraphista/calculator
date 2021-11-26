@@ -9,7 +9,6 @@ body {
 }
 
 .container, .screen, .numpad, button {
-  /* border: black solid 1px; */
   box-sizing: border-box;
 }
 
@@ -18,19 +17,19 @@ body {
   flex-direction: column;
   height: 555px;
   width: 430px;
-  /* background-color: rgb(35, 35, 37); */
   padding: 5px;
   box-shadow: 0 0 15px 0 rgb(145, 145, 145);
 }
 
-.container .screen {
+.container div.screen {
   display: flex;
-  flex-direction: column;
   height: 150px;
   width: 400px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
   font-size: 60px;
-  padding-top: 20px;
-  align-items: flex-end;
 }
 
 .container .numpad {
