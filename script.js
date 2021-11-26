@@ -1,5 +1,9 @@
+const body = document.querySelector("body");
+const container = document.querySelector(".container");
+const theme = document.querySelector("#theme");
 const screen = document.querySelector(".screen");
 const buttons = Array.from(document.querySelectorAll("button"));
+const button = document.querySelector("button");
 const displayables = Array.from(document.querySelectorAll(".displayable"));
 const numbers = Array.from(document.querySelectorAll(".number"));
 const arithmetics = Array.from(document.querySelectorAll(".arithmetic"));
@@ -128,3 +132,9 @@ function multiply(a, b) {
 function divide(a, b) {
   return +a / +b;
 }
+
+theme.addEventListener("change", () => {
+body.classList.toggle("dark-mode");
+container.classList.toggle("dark-mode");
+buttons.forEach(button => button.classList.toggle("dark-mode"));
+})
