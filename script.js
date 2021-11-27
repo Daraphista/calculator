@@ -18,12 +18,21 @@ arithmetics.forEach(button => button.addEventListener("click", () => {
 }))
 
 displayables.forEach(button => button.addEventListener("click", () => {
+  
   if(screen.textContent === '0') {screen.textContent = screen.textContent.substring(1)}
-
   if(screen.textContent.length < 23) {screen.textContent += button.textContent}
+  if(screen.textContent === '') {screen.textContent += '0'}
   
   screen.textContent = format(screen.textContent);
 }))
+
+window.addEventListener("keydown", function(e) {
+  console.log(e.key);
+  if(e.key == "Backspace") {removeChar()};
+  const keycap = document.querySelector(`button[data-key="${e.key}"]`)
+  screen.textContent += keycap.textContent;
+});
+
 
 buttons.forEach(button => button.addEventListener("click", () => {
   if(screen.textContent.length > 0 && screen.textContent.length <= 11) {screen.style.fontSize = "60px"} else
@@ -36,7 +45,7 @@ equals.addEventListener("click", () => {
 });
 
 backspace.addEventListener("click", () => {
-  screen.textContent = screen.textContent.slice(0, -1);
+  removeChar();
   if(screen.textContent === '') {
     screen.textContent = '0';
   }
@@ -82,6 +91,12 @@ percent.addEventListener("click", () => {
   console.log(num);
 })
 
+theme.addEventListener("change", () => {
+  body.classList.toggle("dark-mode");
+  container.classList.toggle("dark-mode");
+  buttons.forEach(button => button.classList.toggle("dark-mode"));
+})
+
 String.prototype.insert = function(index, string) {
   if (index > 0) {
     return this.substring(0, index) + string + this.substr(index);
@@ -100,20 +115,20 @@ function format(str) {
 
 function calculate(str) {
   let result;
-
+  
   str = str.replace(/=/g, ""); 
   const arr = str.split(/\+|−|÷|×/g);
-
+  
   if(str.includes("+")) {
     result = add(arr[0], arr[1]);
-    } else if(str.includes("−")) {
+  } else if(str.includes("−")) {
     result = subtract(arr[0], arr[1]);
   } else if(str.includes("×")) {
     result = multiply(arr[0], arr[1]);
   } else if(str.includes("÷")) {
     result = divide(arr[0], arr[1]);
   }
-
+  
   return (Number.isInteger(result)) ? result : result.toFixed(2); 
 }
 
@@ -133,8 +148,4 @@ function divide(a, b) {
   return (+a === 0 || +b === 0) ? alert("I see what you're trying to do ;)") : +a / +b ;
 }
 
-theme.addEventListener("change", () => {
-body.classList.toggle("dark-mode");
-container.classList.toggle("dark-mode");
-buttons.forEach(button => button.classList.toggle("dark-mode"));
-})
+function removeChar() {screen.textContent = screen.textContent.slice(0, -1)};
