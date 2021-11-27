@@ -27,10 +27,14 @@ displayables.forEach(button => button.addEventListener("click", () => {
 }))
 
 window.addEventListener("keydown", function(e) {
-  console.log(e.key);
+  if(screen.textContent === '0') {screen.textContent = screen.textContent.substring(1)}
   if(e.key == "Backspace") {removeChar()};
   const keycap = document.querySelector(`button[data-key="${e.key}"]`)
-  screen.textContent += keycap.textContent;
+  if(screen.textContent === '') {screen.textContent += '0'}
+  if(screen.textContent.length < 23) {screen.textContent += keycap.textContent}
+  if(screen.textContent.length > 0 && screen.textContent.length <= 11) {screen.style.fontSize = "60px"} else
+  if(screen.textContent.length >= 11 && screen.textContent.length <= 17) {screen.style.fontSize = "40px"} else
+  if(screen.textContent.length > 16 && screen.textContent.length < 24) {screen.style.fontSize = "30px"}
 });
 
 
