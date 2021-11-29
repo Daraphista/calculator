@@ -27,14 +27,12 @@ displayables.forEach(button => button.addEventListener("click", () => {
 }))
 
 window.addEventListener("keydown", function(e) {
-  if(screen.textContent === '0') {screen.textContent = screen.textContent.substring(1)}
-  if(e.key == "Backspace") {removeChar()};
+  if(screen.textContent === '0') {screen.textContent = " ";}
   const keycap = document.querySelector(`button[data-key="${e.key}"]`)
+  if(e.key == "Backspace") {removeChar(); limitText()};
   if(screen.textContent === '') {screen.textContent += '0'}
   if(screen.textContent.length < 23) {screen.textContent += keycap.textContent}
-  if(screen.textContent.length > 0 && screen.textContent.length <= 11) {screen.style.fontSize = "60px"} else
-  if(screen.textContent.length >= 11 && screen.textContent.length <= 17) {screen.style.fontSize = "40px"} else
-  if(screen.textContent.length > 16 && screen.textContent.length < 24) {screen.style.fontSize = "30px"}
+  limitText();
 });
 
 
@@ -107,6 +105,12 @@ String.prototype.insert = function(index, string) {
   }
   
   return string + this;
+}
+
+function limitText() {
+  if(screen.textContent.length > 0 && screen.textContent.length <= 11) {screen.style.fontSize = "60px"} else
+  if(screen.textContent.length >= 11 && screen.textContent.length <= 17) {screen.style.fontSize = "40px"} else
+  if(screen.textContent.length > 16 && screen.textContent.length < 24) {screen.style.fontSize = "30px"}
 }
 
 function format(str) {
